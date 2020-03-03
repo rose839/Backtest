@@ -1,4 +1,5 @@
 import pandas as pd
+from strategy import Strategy
 
 def SMA(values, n):
     """

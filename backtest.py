@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 from numbers import Number
 from exchangeAPI import ExchangeAPI
-frome utils import assert_msg, read_file
+from strategy import Strategy
+from sma_cross import SmaClass
+from utils import assert_msg, read_file
 
 class Backtest(object):
     """
@@ -85,7 +87,9 @@ class Backtest(object):
         return s
 
 def main():
-    pass
+    data = read_file('test.csv')
+    ret = Backtest(data, SmaClass, ExchangeAPI, 10000.0, 0.003).run()
+    print(ret)
 
 if __name__ == '__main__':
     main()

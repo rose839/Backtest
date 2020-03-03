@@ -19,41 +19,41 @@ class ExchangeAPI(object):
         self._cash = cash  # current cash in account
         self._cursor = 0   # corrent position in data
 
-        @property
-        def cash(self):
-            return self._cash
+    @property
+    def cash(self):
+        return self._cash
 
-        @property
-        def position(self):
-            return self._position
+    @property
+    def position(self):
+        return self._position
 
-        @property
-        def initial_cash(self):
-            return self._initial_cash
+    @property
+    def initial_cash(self):
+        return self._initial_cash
 
-        @property
-        def market_value(self):
-            return self._cash + self._position * self.current_price
+    @property
+    def market_value(self):
+        return self._cash + self._position * self.current_price
 
-        @property
-        def current_price(self):
-            return self._data.Close[self._cursor]
+    @property
+    def current_price(self):
+        return self._data.Close[self._cursor]
 
-        def buy(self):
-            """
-            Buying in as market value using spare cash in account
-            :return:
-            """
-            self._position = float(self._cash * (1 - self._commission) / self.current_price)
-            self._cash = 0.0
+    def buy(self):
+        """
+        Buying in as market value using spare cash in account
+        :return:
+        """
+        self._position = float(self._cash * (1 - self._commission) / self.current_price)
+        self._cash = 0.0
 
-        def sell(self):
-            """
-            Selling out all position
-            :return:
-            """
-            self._cash += float(self._position * self.current_price * (1 - self._commission))
-            self._position = 0.0
+    def sell(self):
+        """
+        Selling out all position
+        :return:
+        """
+        self._cash += float(self._position * self.current_price * (1 - self._commission))
+        self._position = 0.0
 
-        def next(self, tick):
-            self._cursor = tick
+    def next(self, tick):
+        self._cursor = tick

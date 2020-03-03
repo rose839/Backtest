@@ -6,7 +6,7 @@ def assert_msg(condition, msg):
         raise Exception(msg)
 
 def read_file(filename):
-    filepath = os.path.join(path.dirname(__file__), filename)
+    filepath = os.path.join(os.path.dirname(__file__), filename)
 
     assert_msg(os.path.exists(filepath), "File doesn't exists!")
 
