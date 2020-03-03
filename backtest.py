@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from numbers import Number
+from exchangeAPI import ExchangeAPI
 frome utils import assert_msg, read_file
 
 class Backtest(object):
